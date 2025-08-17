@@ -13,7 +13,7 @@ $username  = $row['registerer'];
 $date      = $row['regist_day'];
 $no        = $row['no'];
 
-$sqlf = "select * from tb_bulletin_file where notice_no=$no";
+$sqlf = "select * from tb_bulletin_file where bulletin_no=$no";
 $resultf = mysqli_query($conn, $sqlf);
 $rowf = mysqli_fetch_assoc($resultf);
 ?>
