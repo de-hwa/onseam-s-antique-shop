@@ -38,9 +38,11 @@ if (strlen($f_pw) < 8 || strlen($f_pw) > 64) {
 }
 
 
-$sql = "SELECT * from users_info where id='$f_id'";
-$result = mysqli_query($conn, $sql);
-$row = mysqli_fetch_assoc($result);
+$stmt = $conn->prepare("SELECT * from users_info where id = ?");
+$stmt->bind_param("s",$f_id);
+$stmt->execute();
+$res = $stmt->get_result();
+$row = $res->fetch_assoc();
 
 if(!$row) {
         echo "<script>
@@ -65,3 +67,4 @@ if(!$row) {
         }
 }
 ?>
+
