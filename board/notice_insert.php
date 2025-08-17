@@ -6,10 +6,13 @@ error_reporting(E_ALL);
 session_start();
 require '../include/db_connect.php';
 
-if (!isset($_SESSION['s_role']) || $_SESSION['s_role'] !== 'admin') {
-    header('Location: ../error.html');
-    exit;
+if (!isset($_SESSION['s_name'])) {
+        echo "<script>alert('로그인 후 이용해 주세요.');
+        location.href='../member/login_form.php';
+        </script>";
+        exit;
 }
+
 
 $s_id   = $_SESSION['s_id']   ?? '';
 $s_name = $_SESSION['s_name'] ?? '';

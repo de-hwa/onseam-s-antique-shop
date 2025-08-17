@@ -5,6 +5,12 @@ error_reporting(E_ALL);
 
 session_start();
 include "../include/db_connect.php";
+if (!isset($_SESSION['s_name'])) {
+        echo "<script>alert('로그인 후 이용해 주세요.');
+        location.href='../member/login_form.php';
+        </script>";
+        exit;
+}
 
 $s_role = $_SESSION['s_role'] ?? '';
 if ($s_role == '') {

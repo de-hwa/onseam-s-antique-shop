@@ -2,6 +2,13 @@
 include "../include/db_connect.php";
 
 session_start();
+if (!isset($_SESSION['s_name'])) {
+        echo "<script>alert('로그인 후 이용해 주세요.');
+        location.href='../member/login_form.php';
+        </script>";
+        exit;
+}
+
 $no = $_POST['no'];
 $content = $_POST['content'];
 $subject = $_POST['subject'];
