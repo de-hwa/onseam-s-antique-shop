@@ -85,7 +85,12 @@ if ($row['registerer'] == $s_name) {
     <input type="hidden" name="no" value="<?= htmlspecialchars($no,ENT_QUOTES) ?>">
     <button type="button" class="btn" onclick="confirmDelete()">글 삭제</button>
   </form>
-<?php } ?>
+<?php } else if ($_SESSION['s_role'] == 'admin') {
+?>
+    <button type="button" class="btn" onclick="confirmDelete()">글 삭제</button>
+<?php
+}
+?>
 </div>
 
 </body>
