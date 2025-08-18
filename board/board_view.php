@@ -87,7 +87,10 @@ if ($row['registerer'] == $s_name) {
   </form>
 <?php } else if ($_SESSION['s_role'] == 'admin') {
 ?>
+<form id="deleteForm" action="../board/board_delete.php" method="POST" style="display:inline;">
+    <input type="hidden" name="no" value="<?= htmlspecialchars($no,ENT_QUOTES) ?>">
     <button type="button" class="btn" onclick="confirmDelete()">글 삭제</button>
+</form>
 <?php
 }
 ?>
