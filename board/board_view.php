@@ -71,11 +71,6 @@ if(!isset($_SESSION['s_name'])) {
   <button type="button" class="btn" onclick="location.href='../main/index.php'">메인으로</button>
   <button type="button" class="btn" onclick="location.href='../member/login_form.php'">로그인</button>
 <?php
-} else {
-?>
-  <button type="button" class="btn" onclick="location.href='../board/board_list.php'">목록으로</button>
-  <button type="button" class="btn" onclick="location.href='../board/board_form.php'">글 작성</button>
-<?php
 }
 $s_name = $_SESSION['s_name'] ?? '';
 if ($row['registerer'] == $s_name) {
@@ -85,7 +80,16 @@ if ($row['registerer'] == $s_name) {
     <input type="hidden" name="no" value="<?= htmlspecialchars($no,ENT_QUOTES) ?>">
     <button type="button" class="btn" onclick="confirmDelete()">글 삭제</button>
   </form>
-<?php } ?>
+<?php }
+else if ($s_name == 'admin') {
+?>
+<form id="deleteForm" action="../board/board_delete.php" method="POST" style="display:inline;">
+    <input type="hidden" name="no" value="<?= htmlspecialchars($no,ENT_QUOTES) ?>">
+    <button type="button" class="btn" onclick="confirmDelete()">글 삭제</button>
+</form>
+<?php
+}
+?>
 </div>
 
 </body>
