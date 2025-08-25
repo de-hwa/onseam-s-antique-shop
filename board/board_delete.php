@@ -22,7 +22,7 @@ $rows = $res->num_rows;
 $row = $res->fetch_assoc();
 
 if($rows == 1) {
-        if($_SESSION['s_name'] == $row['registerer']){
+        if($_SESSION['s_name'] == $row['registerer'] || $_SESSION['s_role'] == 'admin'){
                 $stmt = $conn->prepare("delete from tb_bulletin where no = ?");
                 $stmt->bind_param("i",$no);
                 $stmt->execute();

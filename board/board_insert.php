@@ -65,7 +65,7 @@ try {
         $mime = mime_content_type($dest) ?: ($_FILES['b_upload_file']['type'] ?? 'application/octet-stream');
 
         $stmtFile = $conn->prepare(
-            "INSERT INTO tb_bulletin_file (notice_no, original_name, stored_name, file_size, file_type)
+            "INSERT INTO tb_bulletin_file (bulletin_no, original_name, stored_name, file_size, file_type)
              VALUES (?, ?, ?, ?, ?)"
         );
         $stmtFile->bind_param("issis", $noticeNo, $origName, $storedName, $fileSize, $mime);
